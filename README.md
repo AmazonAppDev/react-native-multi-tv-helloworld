@@ -210,6 +210,13 @@ If you see `[CXX1101] NDK did not have a source.properties file`, remove any emp
 - [Expo Documentation](https://docs.expo.dev/)
 - [Yarn Workspaces](https://yarnpkg.com/features/workspaces)
 
+## Next Steps 
+
+- Create Your Own Shared Components - Build your own shared components using [`Header`](https://github.com/AmazonAppDev/react-native-multi-tv-helloworld/tree/main/packages/shared/src/components/Header) as an example.
+- Check Out Our Docs - Explore the [Vega developer documentation](https://developer.amazon.com/apps-and-games/vega).
+- Use AI Tooling - Experiment with the [Builder Tools MCP](https://developer.amazon.com/docs/vega/0.22/mcp-server.html) and other AI agents to build your app.
+- Join the Community - Share learnings and learn from our community in the [forums space](https://community.amazondeveloper.com/).
+
 ## License
 
 See [LICENSE](LICENSE) file.
