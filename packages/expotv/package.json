@@ -39,7 +39,6 @@
   "devDependencies": {
     "@react-native-tvos/config-tv": "^0.1.4",
     "@types/react": "~19.1.10",
-    "react-native-monorepo-tools": "^1.2.1",
     "typescript": "~5.9.2"
   },
   "expo": {

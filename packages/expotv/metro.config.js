@@ -1,24 +1,8 @@
 // Learn more https://docs.expo.io/guides/customizing-metro
 const { getDefaultConfig } = require('expo/metro-config');
-const { getMetroTools, getMonorepoRoot } = require("react-native-monorepo-tools");
-const path = require('path');
-
-const projectRoot = __dirname;
-const monorepoRoot = getMonorepoRoot();
-const metroTools = getMetroTools();
 
 /** @type {import('expo/metro-config').MetroConfig} */
-const config = getDefaultConfig(projectRoot); // eslint-disable-line no-undef
-
-config.resolver.nodeModulesPaths = [
-  path.resolve(projectRoot, 'node_modules'),
-  path.resolve(monorepoRoot, 'node_modules'),
-];
-
-// Configure for monorepo - watch the shared workspace
-config.watchFolders = metroTools.watchFolders;
-config.resolver.extraNodeModules = metroTools.extraNodeModules;
-config.resolver.blockList = metroTools.blockList;
+const config = getDefaultConfig(__dirname);
 
 // When enabled, the optional code below will allow Metro to resolve
 // and bundle source files with TV-specific extensions
