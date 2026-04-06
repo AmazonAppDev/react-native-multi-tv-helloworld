@@ -48,6 +48,7 @@
       "output": "static"
     },
     "experiments": {
+      "autolinkingModuleResolution": true,
       "typedRoutes": true
     },
     "newArchEnabled": true,
