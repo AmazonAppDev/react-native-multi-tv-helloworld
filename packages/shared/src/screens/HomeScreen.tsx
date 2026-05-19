@@ -17,6 +17,10 @@ export const HomeScreen = () => {
     setFocusedTileId(tileId);
   }, []);
 
+  const handleTileBlur = useCallback(() => {
+    setFocusedTileId('home');
+  }, []);
+
   const renderFocusedContent = () => {
     if (focusedTileId === 'home') {
       return <Header />;
@@ -49,11 +53,12 @@ export const HomeScreen = () => {
         {tiles.map(tile => (
           <Tile
             key={tile.id}
+            id={tile.id}
             label={tile.label}
             icon={tile.icon}
             isFocused={focusedTileId === tile.id}
-            onFocus={() => handleTileFocus(tile.id)}
-            onBlur={() => setFocusedTileId('home')}
+            onFocus={handleTileFocus}
+            onBlur={handleTileBlur}
             testID={`tile-${tile.id}`}
             accessibilityLabel={tile.accessibilityLabel}
             hasTVPreferredFocus={tile.id === 'home'}
