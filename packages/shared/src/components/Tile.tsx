@@ -88,6 +88,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     lineHeight: scaleFontSize(52),
-    includeFontPadding: false,
+    width: '100%'
   },
 });

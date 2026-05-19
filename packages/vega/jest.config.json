@@ -1,7 +1,7 @@
 {
   "preset": "react-native",
   "transform": {
-    "^.+\\.tsx?$": "ts-jest"
+    "^.+\\.tsx?$": ["ts-jest", { "babelConfig": true, "diagnostics": true }]
   },
   "setupFiles": ["./node_modules/@amazon-devices/react-native-kepler/jest/setup.js"],
   "testRegex": "/test/.*\\.(test|spec)\\.(ts|tsx|js)$",
@@ -24,13 +24,7 @@
     "!src/**/*.d.ts"
   ],
   "transformIgnorePatterns": [
-    "node_modules/(?![\\w\\-_]+)/node_modules/(?!react-native|@react-native)/"
+    "node_modules/(?!((jest-)?react-native|@react-native(-community)?|@amazon-devices/react-native-kepler|react-native-safe-area-context)/)"
   ],
-  "coverageDirectory": ".tmp/coverage",
-  "globals": {
-    "ts-jest": {
-      "babelConfig": true,
-      "diagnostics": true
-    }
-  }
+  "coverageDirectory": ".tmp/coverage"
 }

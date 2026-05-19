@@ -6,7 +6,7 @@
     "clean": "yarn workspaces foreach --all run clean ; rm -rf node_modules",
     "vega:build": "yarn workspace @multitv/vega run build:debug",
     "expotv": "yarn workspace @multitv/expotv",
-    "expotv:prebuild": "yarn workspace @multitv/expotv run prebuild",
+    "expotv:prebuild": "yarn workspace @multitv/expotv run prebuild:tv",
     "expotv:android": "yarn workspace @multitv/expotv run android",
     "expotv:ios": "yarn workspace @multitv/expotv run ios",
     "expotv:web": "yarn workspace @multitv/expotv run web"

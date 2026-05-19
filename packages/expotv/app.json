@@ -30,7 +30,6 @@
       "expo-web-browser"
     ],
     "android": {
-      "edgeToEdgeEnabled": true,
       "splash": {
         "image": "./assets/images/splash.png"
       },
@@ -51,7 +50,6 @@
       "autolinkingModuleResolution": true,
       "typedRoutes": true
     },
-    "newArchEnabled": true,
     "name": "MyTVProject",
     "slug": "MyTVProject"
   }

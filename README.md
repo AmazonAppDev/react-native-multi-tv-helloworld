@@ -156,9 +156,9 @@ yarn expotv:web
 
 | | Expo TV | Vega (Fire TV) |
 |---|---------|----------------|
-| Framework | Expo SDK 54 | Kepler (@amazon-devices/react-native-kepler ^2.0.0) |
-| React | 19.1.0 | 18.2.0 |
-| React Native | react-native-tvos 0.81-stable | 0.72.0 |
+| Framework | Expo SDK 55 | Kepler (@amazon-devices/react-native-kepler ^2.0.0) |
+| React | 19.2.0 | 18.2.0 |
+| React Native | react-native-tvos 0.83.6-0 | 0.72.0 |
 | TypeScript | ~5.9.2 | 4.8.4 |
 
 The shared package (`@multitv/shared`) provides:
