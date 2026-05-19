@@ -156,10 +156,10 @@ yarn expotv:web
 
 | | Expo TV | Vega (Fire TV) |
 |---|---------|----------------|
-| Framework | Expo SDK 55 | Kepler (@amazon-devices/react-native-kepler ^2.0.0) |
-| React | 19.2.0 | 18.2.0 |
-| React Native | react-native-tvos 0.83.6-0 | 0.72.0 |
-| TypeScript | ~5.9.2 | 4.8.4 |
+| Framework | Expo SDK 55 | Kepler (@amazon-devices/react-native-kepler 4.0.0) |
+| React | 19.2.0 | 19.2.0 |
+| React Native | react-native-tvos 0.83.6-0 | 0.83.0 |
+| TypeScript | ~5.9.2 | 5.8.3 |
 
 The shared package (`@multitv/shared`) provides:
 - UI components: Header, HeaderLogo (with platform-specific variants), Tile, ApiDemo, IconReactNativeAnimated
