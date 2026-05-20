@@ -14,11 +14,11 @@ This project demonstrates how to share React Native code across multiple TV plat
 
 ### Supported Platforms
 
-| Platform | Target Devices |
-|----------|----------------|
-| Vega (Kepler) | Fire TV |
-| Expo TV | Android TV, Apple TV |
-| Expo Web | Browser |
+| Platform      | Target Devices       |
+| ------------- | -------------------- |
+| Vega (Kepler) | Fire TV              |
+| Expo TV       | Android TV, Apple TV |
+| Expo Web      | Browser              |
 
 ## Project Structure
 
@@ -52,6 +52,7 @@ This project demonstrates how to share React Native code across multiple TV plat
 ## Prerequisites
 
 ### Core Requirements
+
 - [Node.js](https://nodejs.org/) (v18 or higher)
 - [Yarn](https://yarnpkg.com/) (v4.5.0 or higher)
 - [Git](https://git-scm.com/)
@@ -79,6 +80,15 @@ yarn
 
 # Build the Vega/Fire TV app (debug)
 yarn vega:build
+
+# Run on Vega Virtual Device (Mac M-series)
+yarn vega:vvd:mseries
+
+# Run on Vega Virtual Device (Intel Mac)
+yarn vega:vvd:intel
+
+# Run on a Fire TV Stick (pass DSN)
+yarn vega:firetv <DSN>
 
 # Prebuild Expo TV native projects
 yarn expotv:prebuild
@@ -114,18 +124,31 @@ Run on a Vega virtual device:
 ```bash
 vega virtual-device start
 
+# Mac M-series (aarch64) - using yarn script
+yarn vega:vvd:mseries
+
+# Intel Mac (x86_64) - using yarn script
+yarn vega:vvd:intel
+
+# Or directly with the Vega CLI
 # Mac M-series (aarch64)
-vega run-app packages/vega/build/aarch64-debug/vega_aarch64.vpkg
+vega run-app packages/vega/build/aarch64-debug/vega_aarch64.vpkg com.amazondeveloper.hellosharedworkspace.main -d VirtualDevice
 
 # Intel Mac (x86_64)
-vega run-app packages/vega/build/x86_64-debug/vega_x86_64.vpkg
+vega run-app packages/vega/build/x86_64-debug/vega_x86_64.vpkg com.amazondeveloper.hellosharedworkspace.main -d VirtualDevice
 ```
 
-Run on a Fire TV Stick:
+Run on a Fire TV Stick (replace `<DSN>` with your device serial number):
 
 ```bash
-vega run-app packages/vega/build/armv7-release/vega_armv7.vpkg
+# Using the yarn script
+yarn vega:firetv <DSN>
+
+# Or directly
+vega run-app packages/vega/build/armv7-release/vega_armv7.vpkg com.amazondeveloper.hellosharedworkspace.main -d <DSN>
 ```
+
+The `vega run-app` command takes the form `vega run-app <Vpkg path> <App ID> -d <device>`. The App ID is the interactive component id from `manifest.toml` (here, `com.amazondeveloper.hellosharedworkspace.main`). Use `VirtualDevice` for the VVD or the device serial number (DSN) for a Fire TV Stick. See the [Vega CLI reference](https://developer.amazon.com/docs/vega/0.22/cli-tools.html) for details.
 
 [Fast Refresh](https://reactnative.dev/docs/fast-refresh) is available in debug builds. See [Set Up Fast Refresh](https://developer.amazon.com/docs/vega/latest/fast-refresh.html) for configuration.
 
@@ -154,14 +177,15 @@ yarn expotv:web
 
 ## Tech Stack
 
-| | Expo TV | Vega (Fire TV) |
-|---|---------|----------------|
-| Framework | Expo SDK 54 | Kepler (@amazon-devices/react-native-kepler ^2.0.0) |
-| React | 19.1.0 | 18.2.0 |
-| React Native | react-native-tvos 0.81-stable | 0.72.0 |
-| TypeScript | ~5.9.2 | 4.8.4 |
+|              | Expo TV                       | Vega (Fire TV)                                      |
+| ------------ | ----------------------------- | --------------------------------------------------- |
+| Framework    | Expo SDK 54                   | Kepler (@amazon-devices/react-native-kepler ^2.0.0) |
+| React        | 19.1.0                        | 18.2.0                                              |
+| React Native | react-native-tvos 0.81-stable | 0.72.0                                              |
+| TypeScript   | ~5.9.2                        | 4.8.4                                               |
 
 The shared package (`@multitv/shared`) provides:
+
 - UI components: Header, HeaderLogo (with platform-specific variants), Tile, ApiDemo, IconReactNativeAnimated
 - HomeScreen with tile-based navigation and focus management
 - Scaling utilities for TV display dimensions (1920x1080 base). The scaling approach used here is simple and works for a demo, but for production apps you may want a more robust solution like responsive layouts or a design system.
@@ -194,6 +218,7 @@ See [Vega CLI Installation](https://developer.amazon.com/docs/vega/latest/instal
 ### Fast Refresh Not Working
 
 Fast Refresh only works with debug builds:
+
 - `vega_aarch64.vpkg` from `aarch64-debug/` for M-series Mac
 - `vega_x86_64.vpkg` from `x86_64-debug/` for Intel Mac
 - `vega_armv7.vpkg` from `armv7-debug/` for Fire TV Stick

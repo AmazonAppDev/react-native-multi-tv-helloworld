@@ -7,7 +7,7 @@
   ],
   "scripts": {
     "clean": "rm -rf node_modules buildinfo.json dist build",
-    "start": "react-native start --port 8083",
+    "start": "react-native start",
     "test": "jest --colors ",
     "test:snapshot": "jest --colors --updateSnapshot",
     "lint": "eslint src test",
@@ -16,7 +16,10 @@
     "build:debug": "react-native build-kepler --build-type Debug",
     "build:app": "npm-run-all build:release",
     "build": "npm-run-all build:release",
-    "release": "npm-run-all lint test build:app"
+    "release": "npm-run-all lint test build:app",
+    "vvd:mseries": "vega run-app build/aarch64-debug/vega_aarch64.vpkg com.amazondeveloper.hellosharedworkspace.main -d VirtualDevice",
+    "vvd:intel": "vega run-app build/x86_64-debug/vega_x86_64.vpkg com.amazondeveloper.hellosharedworkspace.main -d VirtualDevice",
+    "firetv": "vega run-app build/armv7-release/vega_armv7.vpkg com.amazondeveloper.hellosharedworkspace.main -d"
   },
   "dependencies": {
     "@amazon-devices/kepler-module-resolver-preset": "^0.1.15",
