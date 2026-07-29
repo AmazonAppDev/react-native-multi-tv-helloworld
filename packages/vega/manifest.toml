@@ -10,9 +10,22 @@ title = "Basic UI React Native Application for project hellosharedworkspace"
 version = "0.1.0"
 id = "com.amazondeveloper.hellosharedworkspace"
 
+[os.version]
+target = "1.2"
+
 [components]
 [[components.interactive]]
 id = "com.amazondeveloper.hellosharedworkspace.main"
 runtime-module = "/com.amazon.kepler.runtime.react_native_kepler_4@IReactNativeKepler_0"
 launch-type = "singleton"
 categories = ["com.amazon.category.main"]
+
+[needs]
+[[needs.module]]
+id = "/com.amazon.vega.os@IVega_1_2"
+
+[[needs.module]]
+id = "/com.amazon.kepler.lottie_3@ILottie_0"
+
+[[needs.module]]
+id = "/com.amazon.kepler.keplerscript_4@IKeplerScript_0"

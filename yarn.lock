@@ -91,7 +91,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@amazon-devices/lottie-react-native@npm:3.0.9000000000":
+"@amazon-devices/lottie-react-native@npm:~3.0.9000000000+6.0.0-rc.1":
   version: 3.0.9000000000
   resolution: "@amazon-devices/lottie-react-native@npm:3.0.9000000000"
   peerDependencies:
@@ -102,7 +102,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@amazon-devices/react-native-kepler@npm:4.0.0":
+"@amazon-devices/react-native-kepler@npm:~4.0.0+rn0.83.0":
   version: 4.0.0
   resolution: "@amazon-devices/react-native-kepler@npm:4.0.0"
   dependencies:
@@ -2971,8 +2971,8 @@ __metadata:
     "@amazon-devices/kepler-cli-platform": "npm:0.22.13"
     "@amazon-devices/kepler-module-resolver-preset": "npm:^0.1.15"
     "@amazon-devices/keplerscript-commonmodules": "npm:^1.0.0"
-    "@amazon-devices/lottie-react-native": "npm:3.0.9000000000"
-    "@amazon-devices/react-native-kepler": "npm:4.0.0"
+    "@amazon-devices/lottie-react-native": "npm:~3.0.9000000000+6.0.0-rc.1"
+    "@amazon-devices/react-native-kepler": "npm:~4.0.0+rn0.83.0"
     "@babel/core": "npm:^7.25.2"
     "@babel/preset-env": "npm:^7.25.3"
     "@babel/runtime": "npm:^7.25.0"
