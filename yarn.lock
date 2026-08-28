@@ -12,9 +12,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@amazon-devices/kepler-cli-platform@npm:0.22.13":
-  version: 0.22.13
-  resolution: "@amazon-devices/kepler-cli-platform@npm:0.22.13"
+"@amazon-devices/kepler-cli-platform@npm:0.22.13-rn-83":
+  version: 0.22.13-rn-83
+  resolution: "@amazon-devices/kepler-cli-platform@npm:0.22.13-rn-83"
   dependencies:
     "@amazon-devices/kepler-compatibility-metro-config": "npm:^0"
     "@amazon-devices/kepler-module-manifest-builder": "npm:^0.1.0"
@@ -35,7 +35,7 @@ __metadata:
   dependenciesMeta:
     "@amazon-devices/keplerscript-commonmodules":
       optional: true
-  checksum: 10c0/aaccc4d03bdf1526600fdf861eee95b8355c5aa06c48fe17dc679cb7ecd36fd6a1ef221a579fad49c0d8f2f021ade56876119a476409b4e30f24db744b4a2818
+  checksum: 10c0/48b422381153d2ddd4cc87c3500289d7129710667fd768c3213e501bf49ad5058f8c52c914a8ee08ddaa3c6936eae3d09bcd9f01b4eb701dae0ab60a5410b28a
   languageName: node
   linkType: hard
 
@@ -2968,7 +2968,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@multitv/vega@workspace:packages/vega"
   dependencies:
-    "@amazon-devices/kepler-cli-platform": "npm:0.22.13"
+    "@amazon-devices/kepler-cli-platform": "npm:0.22.13-rn-83"
     "@amazon-devices/kepler-module-resolver-preset": "npm:^0.1.15"
     "@amazon-devices/keplerscript-commonmodules": "npm:^1.0.0"
     "@amazon-devices/lottie-react-native": "npm:~3.0.9000000000+6.0.0-rc.1"

@@ -33,7 +33,7 @@
     "react-native-safe-area-context": "^5.5.2"
   },
   "devDependencies": {
-    "@amazon-devices/kepler-cli-platform": "0.22.13",
+    "@amazon-devices/kepler-cli-platform": "0.22.13-rn-83",
     "@amazon-devices/keplerscript-commonmodules": "^1.0.0",
     "@babel/core": "^7.25.2",
     "@babel/preset-env": "^7.25.3",

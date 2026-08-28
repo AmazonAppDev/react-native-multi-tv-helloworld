@@ -11,6 +11,7 @@ version = "0.1.0"
 id = "com.amazondeveloper.hellosharedworkspace"
 
 [os.version]
+min = "1.2"
 target = "1.2"
 
 [components]
