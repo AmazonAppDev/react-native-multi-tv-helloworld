@@ -23,9 +23,6 @@ categories = ["com.amazon.category.main"]
 
 [needs]
 [[needs.module]]
-id = "/com.amazon.vega.os@IVega_1_2"
-
-[[needs.module]]
 id = "/com.amazon.kepler.lottie_3@ILottie_0"
 
 [[needs.module]]
