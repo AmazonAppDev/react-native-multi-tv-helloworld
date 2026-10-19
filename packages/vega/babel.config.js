@@ -5,9 +5,8 @@
  */
 module.exports = {
   presets: [
-    [
-      'module:@react-native/babel-preset',
-    ],
+    ['module:@react-native/babel-preset'],
     'module:@amazon-devices/kepler-module-resolver-preset', // Enables usage of VegaModuleResolverPreset
-  ]
+  ],
+  plugins: [['babel-plugin-react-compiler', { target: '19' }]],
 };
