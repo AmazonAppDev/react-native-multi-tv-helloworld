@@ -1,5 +1,4 @@
 module.exports = {
-  preset: '@testing-library/react-native',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',
@@ -15,6 +14,7 @@ module.exports = {
   ],
   setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   moduleNameMapper: {
+    '^react-native$': '<rootDir>/../vega/node_modules/react-native',
     '\\.(jpg|jpeg|png|gif|svg|png)$': '<rootDir>/__mocks__/fileMock.js',
   },
   testEnvironment: 'node',

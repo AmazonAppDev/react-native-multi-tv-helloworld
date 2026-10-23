@@ -1,5 +1,5 @@
 {
   "//": "The declared app name must follow this pattern to be KRL-compatible",
-  "name": "com.amazondeveloper.hellosharedworkspace.main",
-  "displayName": "HelloSharedWorkspace"
+  "name": "earth.globie.tv.main",
+  "displayName": "Globie Earth"
 }

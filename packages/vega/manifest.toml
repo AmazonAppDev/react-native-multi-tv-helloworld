@@ -6,9 +6,10 @@
 schema-version = 1
 
 [package]
-title = "Basic UI React Native Application for project hellosharedworkspace"
+title = "Globie Earth"
 version = "0.1.0"
-id = "com.amazondeveloper.hellosharedworkspace"
+id = "earth.globie.tv"
+icon = "@image/icon.png"
 
 [os.version]
 min = "1.2"
@@ -16,7 +17,7 @@ target = "1.2"
 
 [components]
 [[components.interactive]]
-id = "com.amazondeveloper.hellosharedworkspace.main"
+id = "earth.globie.tv.main"
 runtime-module = "/com.amazon.kepler.runtime.react_native_kepler_4@IReactNativeKepler_0"
 launch-type = "singleton"
 categories = ["com.amazon.category.main"]
@@ -30,3 +31,15 @@ id = "/com.amazon.kepler.lottie_3@ILottie_0"
 
 [[needs.module]]
 id = "/com.amazon.kepler.keplerscript_4@IKeplerScript_0"
+
+[[needs.module]]
+id = "/com.amazon.kepler.w3cmedia_2@IW3cmedia_3"
+
+[[needs.module]]
+id = "/com.amazon.kepler.kepler_media_controls_1@IKeplerMediaControls_0"
+
+[[needs.module]]
+id = "/com.amazon.kepler.keplermediadescriptor_1@IKeplermediadescriptor_1"
+
+[[needs.module]]
+id = "/com.amazon.kepler.async_storage__async_storage_2@IAsyncStorage__AsyncStorage_1"
