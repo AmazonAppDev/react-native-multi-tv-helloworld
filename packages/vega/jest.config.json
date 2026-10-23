@@ -3,17 +3,26 @@
   "transform": {
     "^.+\\.tsx?$": ["ts-jest", { "babelConfig": true, "diagnostics": true }]
   },
-  "setupFiles": ["./node_modules/@amazon-devices/react-native-kepler/jest/setup.js"],
+  "setupFiles": [
+    "./node_modules/@amazon-devices/react-native-kepler/jest/setup.js"
+  ],
   "testRegex": "/test/.*\\.(test|spec)\\.(ts|tsx|js)$",
+  "testTimeout": 15000,
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
   "moduleNameMapper": {
-    "^~/(.*)$": "<rootDir>/src/$1"
+    "^~/(.*)$": "<rootDir>/src/$1",
+    "^@react-native-async-storage/async-storage$": "<rootDir>/node_modules/@react-native-async-storage/async-storage/jest/async-storage-mock.js",
+    "^react$": "<rootDir>/node_modules/react",
+    "^react/(.*)$": "<rootDir>/node_modules/react/$1",
+    "^react-native$": "<rootDir>/node_modules/@amazon-devices/react-native-kepler",
+    "^react-native/(.*)$": "<rootDir>/node_modules/@amazon-devices/react-native-kepler/$1"
   },
-  "modulePaths": ["<rootDir>/src"],
+  "modulePaths": ["<rootDir>/src", "<rootDir>/node_modules"],
   "roots": [
     "<rootDir>/src/",
     "<rootDir>/test/",
-    "<rootDir>/node_modules/"
+    "<rootDir>/node_modules/",
+    "<rootDir>/../shared/"
   ],
   "collectCoverage": false,
   "coverageReporters": ["json", "json-summary", "lcov", "text"],
@@ -24,7 +33,7 @@
     "!src/**/*.d.ts"
   ],
   "transformIgnorePatterns": [
-    "node_modules/(?!((jest-)?react-native|@react-native(-community)?|@amazon-devices/react-native-kepler|react-native-safe-area-context)/)"
+    "node_modules/(?!((jest-)?react-native|@react-native(-community)?|@amazon-devices/react-native-kepler|@amazon-devices/react-native-w3cmedia|react-native-safe-area-context)/)"
   ],
   "coverageDirectory": ".tmp/coverage"
 }

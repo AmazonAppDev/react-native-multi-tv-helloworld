@@ -6,6 +6,8 @@ package-lock.json
 .yarn/build-state.yml
 .yarn/install-state.gz
 .npmrc
+.env.sample
+.env
 
 # Vega build files
 packages/vega/buildinfo.json
@@ -20,9 +22,7 @@ dist/
 .expo/
 .expo-shared/
 
-# Native builds - Expo generated folders
-packages/expotv/android/
-packages/expotv/ios/
+# Native build artefacts
 *.pbxuser
 *.mode1v3
 *.mode2v3

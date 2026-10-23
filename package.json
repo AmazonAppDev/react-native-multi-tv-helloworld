@@ -1,18 +1,13 @@
 {
   "name": "@multitv/workspace",
   "version": "0.1.0",
-  "description": "Multi-TV Hello World - Monorepo for building TV apps across Vega, Expo TV, and mobile platforms",
+  "description": "Globie Earth - Vega OS TV app for the Globie Earth MCP catalogue",
   "scripts": {
     "clean": "yarn workspaces foreach --all run clean ; rm -rf node_modules",
     "vega:build": "yarn workspace @multitv/vega run build:debug",
     "vega:vvd:mseries": "yarn workspace @multitv/vega run vvd:mseries",
     "vega:vvd:intel": "yarn workspace @multitv/vega run vvd:intel",
-    "vega:firetv": "yarn workspace @multitv/vega run firetv",
-    "expotv": "yarn workspace @multitv/expotv",
-    "expotv:prebuild": "yarn workspace @multitv/expotv run prebuild:tv",
-    "expotv:android": "yarn workspace @multitv/expotv run android",
-    "expotv:ios": "yarn workspace @multitv/expotv run ios",
-    "expotv:web": "yarn workspace @multitv/expotv run web"
+    "vega:firetv": "yarn workspace @multitv/vega run firetv"
   },
   "workspaces": {
     "packages": [
@@ -26,5 +21,8 @@
     ]
   },
   "private": true,
+  "resolutions": {
+    "@react-native-async-storage/async-storage": "npm:@amazon-devices/react-native-async-storage__async-storage@~2.1.0"
+  },
   "packageManager": "yarn@4.5.0+sha512.837566d24eec14ec0f5f1411adb544e892b3454255e61fdef8fd05f3429480102806bac7446bc9daff3896b01ae4b62d00096c7e989f1596f2af10b927532f39"
 }

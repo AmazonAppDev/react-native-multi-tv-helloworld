@@ -1,24 +1,21 @@
-# Multi-TV Hello World
+# Globie Earth
 
-A monorepo for building TV apps across multiple platforms using Yarn workspaces, including Vega OS (Fire TV), Expo TV (Android TV / Apple TV), and web.
+An Amazon Vega OS (Fire TV) app that turns the [Globie Earth MCP](https://mcp.globie.earth/mcp) catalogue into a 10-foot TV experience: a browsable forest/podcast shelf and an AI-assisted smart player with a podcast mode.
 
-![Screenshots](./images/screenshots.png)
+Built for the Amazon hackathon (Fire TV / Vega OS track) on top of the Amazon [react-native-multi-tv-helloworld](https://github.com/AmazonAppDev/react-native-multi-tv-helloworld) monorepo template. It pairs with the Globie Earth Alexa skill: a spoken `pair my tv` hands the TV a six-digit code, and the skill then drives the app's quests, search and family quiz over the MCP server's `/v1/tv/commands` relay.
 
 ## Introduction
 
-This project demonstrates how to share React Native code across multiple TV platforms using a Yarn workspaces monorepo. It includes:
+A Yarn 4 workspace with two packages:
 
-- A shared package with common components, screens, and utilities
-- A Vega app targeting Fire TV
-- An Expo TV app targeting Android TV and Apple TV
+- `@multitv/shared` — design system (tokens, scaling, drawn cover art, focus-aware components) and platform-agnostic services (MCP client, AsyncStorage resume state)
+- `@multitv/vega` — the Vega OS app: manifest, dependency wiring, Jest setup, `App.tsx`
 
-### Supported Platforms
+### Supported Platform
 
-| Platform      | Target Devices       |
-| ------------- | -------------------- |
-| Vega (Kepler) | Fire TV              |
-| Expo TV       | Android TV, Apple TV |
-| Expo Web      | Browser              |
+| Platform      | Target Devices |
+| ------------- | -------------- |
+| Vega (Kepler) | Fire TV, Vega Virtual Device |
 
 ## Project Structure
 
@@ -27,21 +24,12 @@ This project demonstrates how to share React Native code across multiple TV plat
 ├── packages/
 │   ├── shared/                  # @multitv/shared
 │   │   ├── src/
-│   │   │   ├── components/      # Header, HeaderLogo, Tile, ApiDemo, IconReactNativeAnimated
-│   │   │   ├── screens/         # HomeScreen
-│   │   │   ├── data/            # Tile definitions
-│   │   │   ├── services/        # HTTP client (fetch-based)
-│   │   │   ├── utils/           # Scaling utilities
-│   │   │   └── assets/          # Platform logos, background images
+│   │   │   ├── components/      # CoverArt, FocusCard, Chip, Shelf, InfoTile, StateView
+│   │   │   ├── theme/           # Design tokens + 1920x1080 scaling
+│   │   │   ├── utils/           # Colour derivation, scaling helpers
+│   │   │   └── services/        # MCP client, HTTP client, AsyncStorage
 │   │   └── index.ts             # Public API exports
-│   ├── expotv/                  # @multitv/expotv
-│   │   ├── app/                 # Expo Router pages
-│   │   ├── components/          # TV-specific components
-│   │   ├── layouts/             # Tab layouts (native + web)
-│   │   ├── hooks/               # useScale, useColorScheme, useTextStyles
-│   │   ├── constants/           # Colors, TextStyles
-│   │   └── assets/              # Images, fonts, TV icons
-│   └── vega/                    # @multitv/vega (symlink)
+│   └── vega/                    # @multitv/vega
 │       ├── src/
 │       │   └── App.tsx
 │       ├── test/
@@ -51,13 +39,9 @@ This project demonstrates how to share React Native code across multiple TV plat
 
 ## Prerequisites
 
-### Core Requirements
-
-- [Node.js](https://nodejs.org/) (v18 or higher)
-- [Yarn](https://yarnpkg.com/) (v4.5.0 or higher)
+- [Node.js](https://nodejs.org/) 20 or higher
+- [Yarn](https://yarnpkg.com/) 4.5.0 or higher
 - [Git](https://git-scm.com/)
-
-### Platform-Specific Requirements
 
 **Vega (Fire TV)**
 
@@ -65,12 +49,6 @@ Vega development requires the Vega SDK and Yarn configuration for Amazon device 
 
 1. [Install the Vega Developer Tools](https://developer.amazon.com/docs/vega/latest/install-vega-sdk.html)
 2. [Configure Yarn for Vega](https://developer.amazon.com/docs/vega/latest/configure-package-managers.html)
-
-**Expo TV**
-
-- [Expo CLI](https://docs.expo.dev/get-started/installation/)
-- Android Studio with an Android TV system image (for Android TV)
-- Xcode (for Apple TV)
 
 ## Quick Start
 
@@ -84,23 +62,18 @@ yarn vega:build
 # Run on Vega Virtual Device (Mac M-series)
 yarn vega:vvd:mseries
 
-# Run on Vega Virtual Device (Intel Mac)
+# Run on Vega Virtual Device (Intel/x86_64)
 yarn vega:vvd:intel
 
 # Run on a Fire TV Stick (pass DSN)
 yarn vega:firetv <DSN>
 
-# Prebuild Expo TV native projects
-yarn expotv:prebuild
+# Tests
+yarn workspace @multitv/shared test
+yarn workspace @multitv/vega test
 
-# Run on Android TV
-yarn expotv:android
-
-# Run on Apple TV
-yarn expotv:ios
-
-# Run on web
-yarn expotv:web
+# Type-check
+yarn workspace @multitv/vega exec tsc --noEmit -p tsconfig.json
 ```
 
 ## Build and Run
@@ -132,10 +105,10 @@ yarn vega:vvd:intel
 
 # Or directly with the Vega CLI
 # Mac M-series (aarch64)
-vega run-app packages/vega/build/aarch64-debug/vega_aarch64.vpkg com.amazondeveloper.hellosharedworkspace.main -d VirtualDevice
+vega run-app packages/vega/build/aarch64-debug/vega_aarch64.vpkg earth.globie.tv.main -d VirtualDevice
 
 # Intel Mac (x86_64)
-vega run-app packages/vega/build/x86_64-debug/vega_x86_64.vpkg com.amazondeveloper.hellosharedworkspace.main -d VirtualDevice
+vega run-app packages/vega/build/x86_64-debug/vega_x86_64.vpkg earth.globie.tv.main -d VirtualDevice
 ```
 
 Run on a Fire TV Stick (replace `<DSN>` with your device serial number):
@@ -145,64 +118,35 @@ Run on a Fire TV Stick (replace `<DSN>` with your device serial number):
 yarn vega:firetv <DSN>
 
 # Or directly
-vega run-app packages/vega/build/armv7-release/vega_armv7.vpkg com.amazondeveloper.hellosharedworkspace.main -d <DSN>
+vega run-app packages/vega/build/armv7-release/vega_armv7.vpkg earth.globie.tv.main -d <DSN>
 ```
 
-The `vega run-app` command takes the form `vega run-app <Vpkg path> <App ID> -d <device>`. The App ID is the interactive component id from `manifest.toml` (here, `com.amazondeveloper.hellosharedworkspace.main`). Use `VirtualDevice` for the VVD or the device serial number (DSN) for a Fire TV Stick. See the [Vega CLI reference](https://developer.amazon.com/docs/vega/0.22/cli-tools.html) for details.
+The `vega run-app` command takes the form `vega run-app <Vpkg path> <App ID> -d <device>`. The App ID is `<package id>.<component name>` from [manifest.toml](./packages/vega/manifest.toml), here `earth.globie.tv` + `main` = `earth.globie.tv.main`. Use `VirtualDevice` for the VVD or the device serial number (DSN) for a Fire TV Stick. See the [Vega CLI reference](https://developer.amazon.com/docs/vega/0.22/cli-tools.html) for details.
 
 [Fast Refresh](https://reactnative.dev/docs/fast-refresh) is available in debug builds. See [Set Up Fast Refresh](https://developer.amazon.com/docs/vega/latest/fast-refresh.html) for configuration.
 
-### Expo TV
-
-> **Note:** Apple TV (iOS) must run on port 8081. Avoid running Vega and Expo TV builds at the same time, as they use separate Metro instances that can conflict.
-
-Prebuild the native projects first:
-
-```bash
-yarn expotv:prebuild
-```
-
-Then run on your target platform:
-
-```bash
-# Android TV
-yarn expotv:android
-
-# Apple TV
-yarn expotv:ios
-
-# Web
-yarn expotv:web
-```
-
 ## Tech Stack
 
-|              | Expo TV                    | Vega (Fire TV)                                     |
-| ------------ | -------------------------- | -------------------------------------------------- |
-| Framework    | Expo SDK 55                | Kepler (@amazon-devices/react-native-kepler 4.0.0) |
-| React        | 19.2.0                     | 19.2.0                                             |
-| React Native | react-native-tvos 0.83.6-0 | 0.83.0                                             |
-| TypeScript   | ~5.9.2                     | 5.8.3                                              |
+|              | Vega (Fire TV)                                     |
+| ------------ | -------------------------------------------------- |
+| Framework    | Kepler (@amazon-devices/react-native-kepler 4.0.0) |
+| React        | 19.2.0                                             |
+| React Native | 0.83.0                                             |
+| TypeScript   | 5.8.3                                              |
+| Media        | @amazon-devices/react-native-w3cmedia ~2.3.2       |
 
 The shared package (`@multitv/shared`) provides:
 
-- UI components: Header, HeaderLogo (with platform-specific variants), Tile, ApiDemo, IconReactNativeAnimated
-- HomeScreen with tile-based navigation and focus management
-- Scaling utilities for TV display dimensions (1920x1080 base). The scaling approach used here is simple and works for a demo, but for production apps you may want a more robust solution like responsive layouts or a design system.
-- A fetch-based HTTP client
-
-### Platform-Specific File Extensions
-
-The shared package uses React Native's platform resolution to load the right assets per platform:
-
-- `.kepler.tsx` for Vega/Fire TV
-- `.android.tsx` for Android TV
-- `.ios.tsx` for Apple TV
-- `.web.tsx` for web
+- Design tokens sized for 1920x1080 with `scaleWidth` / `scaleHeight` / `scaleFontSize` helpers
+- Focus-first TV components: `FocusCard` (always-present 8 px ring, colour-only change), `Chip`, `Shelf`, `InfoTile`, `StateView`
+- `CoverArt`, which draws cover art from a seed colour — Vega has no `linear-gradient`, so gradients are eight stacked `View` bands
+- A fetch-based MCP/HTTP client and AsyncStorage-backed resume state
 
 ## Notes
 
-The Expo TV app (`packages/expotv/`) was scaffolded from the default Expo TV template. Some boilerplate files from the template (e.g. `HelloWave`, `ParallaxScrollView`, `ExternalLink`) are still present and not used by the shared components. They're harmless but can be removed if you want a cleaner setup.
+- The app id is `earth.globie.tv.main`; the package id is `earth.globie.tv`.
+- Media playback requires the `[[needs.module]] /com.amazon.kepler.w3cmedia_2@IW3cmedia_3` entry in `manifest.toml` in addition to the autolinked npm package.
+- Jest for the Vega workspace maps `react-native` to `@amazon-devices/react-native-kepler`, whose `jest/setup.js` installs the `NativeDeviceInfo` mock that `Dimensions.get('window')` needs.
 
 ## Troubleshooting
 
@@ -223,16 +167,11 @@ Fast Refresh only works with debug builds:
 - `vega_x86_64.vpkg` from `x86_64-debug/` for Intel Mac
 - `vega_armv7.vpkg` from `armv7-debug/` for Fire TV Stick
 
-### Android NDK Error
-
-If you see `[CXX1101] NDK did not have a source.properties file`, remove any empty NDK installation directories from your Android SDK.
-
 ## Related Resources
 
 - [React Native Documentation](https://reactnative.dev/)
-- [React Native TvOS](https://github.com/react-native-tvos/react-native-tvos)
 - [Vega Developer Portal](https://developer.amazon.com/docs/vega/vega.html)
-- [Expo Documentation](https://docs.expo.dev/)
+- [Globie Earth MCP](https://mcp.globie.earth/mcp)
 - [Yarn Workspaces](https://yarnpkg.com/features/workspaces)
 
 ## License

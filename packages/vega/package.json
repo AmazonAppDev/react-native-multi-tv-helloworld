@@ -12,20 +12,22 @@
     "test:snapshot": "jest --colors --updateSnapshot",
     "lint": "eslint src test",
     "lint:fix": "eslint src test --fix",
-    "build:release": "react-native build-kepler --build-type Release",
+    "build:release": "DISABLE_APP_BUNDLE_SPLITTING=true react-native build-kepler --build-type Release",
     "build:debug": "react-native build-kepler --build-type Debug",
     "build:app": "npm-run-all build:release",
     "build": "npm-run-all build:release",
     "release": "npm-run-all lint test build:app",
-    "vvd:mseries": "vega run-app build/aarch64-debug/vega_aarch64.vpkg com.amazondeveloper.hellosharedworkspace.main -d VirtualDevice",
-    "vvd:intel": "vega run-app build/x86_64-debug/vega_x86_64.vpkg com.amazondeveloper.hellosharedworkspace.main -d VirtualDevice",
-    "firetv": "vega run-app build/armv7-release/vega_armv7.vpkg com.amazondeveloper.hellosharedworkspace.main -d"
+    "vvd:mseries": "vega run-app build/aarch64-debug/vega_aarch64.vpkg earth.globie.tv.main -d VirtualDevice",
+    "vvd:intel": "vega run-app build/private/kepler/vega/undefined/vega/x86_64/Debug/vega_x86_64.vpkg earth.globie.tv.main -d VirtualDevice",
+    "firetv": "vega run-app build/armv7-release/vega_armv7.vpkg earth.globie.tv.main -d"
   },
   "dependencies": {
     "@amazon-devices/kepler-module-resolver-preset": "^0.1.15",
     "@amazon-devices/lottie-react-native": "~3.0.9000000000+6.0.0-rc.1",
     "@amazon-devices/react-native-kepler": "~4.0.0+rn0.83.0",
+    "@amazon-devices/react-native-w3cmedia": "~2.3.2",
     "@multitv/shared": "*",
+    "@react-native-async-storage/async-storage": "npm:@amazon-devices/react-native-async-storage__async-storage@~2.1.0",
     "@react-native/new-app-screen": "0.83.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "react": "19.2.0",
@@ -43,7 +45,7 @@
     "@react-native/eslint-config": "0.83.0",
     "@react-native/metro-config": "0.83.0",
     "@react-native/typescript-config": "0.83.0",
-    "@testing-library/react-native": "^7.2.0",
+    "@testing-library/react-native": "^13.3.0",
     "@types/jest": "^29.5.0",
     "@types/react": "^19.2.0",
     "@types/react-test-renderer": "^19.1.0",
@@ -61,7 +63,7 @@
   },
   "kepler": {
     "projectType": "application",
-    "appName": "HelloSharedWorkspace",
+    "appName": "GlobieEarth",
     "targets": [
       "tv"
     ]

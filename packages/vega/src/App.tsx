@@ -5,21 +5,24 @@
  */
 
 import React from 'react';
-import {StyleSheet, ImageBackground} from 'react-native';
-import {HomeScreen} from '@multitv/shared';
+import {StyleSheet, View} from 'react-native';
+import {AppNavigator} from './navigation/AppNavigator';
+import {RemoteOverlay} from './navigation/RemoteOverlay';
+import {useRemoteSelect} from './navigation/useRemoteSelect';
 
 export const App = () => {
+  useRemoteSelect();
+
   return (
-    <ImageBackground
-      source={require('./assets/background.png')}
-      style={styles.background}>
-      <HomeScreen />
-    </ImageBackground>
+    <View style={styles.root}>
+      <AppNavigator />
+      <RemoteOverlay />
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  background: {
+  root: {
     flex: 1,
   },
 });

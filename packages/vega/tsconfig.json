@@ -1,6 +1,13 @@
 {
   "extends": "@react-native/typescript-config",
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "react-native": ["./node_modules/react-native"],
+      "react-native/*": ["./node_modules/react-native/*"],
+      "@multitv/shared": ["../shared/index.ts"],
+      "@multitv/shared/*": ["../shared/*"]
+    },
     "types": ["jest", "@amazon-devices/react-native-kepler"]
   },
   "include": ["**/*.ts", "**/*.tsx"],

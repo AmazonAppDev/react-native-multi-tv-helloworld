@@ -22,6 +22,15 @@ module.exports = [
         console: "readonly",
         __dirname: "readonly",
         process: "readonly",
+        __DEV__: "readonly",
+        setTimeout: "readonly",
+        clearTimeout: "readonly",
+        setInterval: "readonly",
+        clearInterval: "readonly",
+        fetch: "readonly",
+        URL: "readonly",
+        AbortController: "readonly",
+        AbortSignal: "readonly",
       },
     },
     plugins: {
@@ -43,6 +52,9 @@ module.exports = [
         afterEach: "readonly",
         jest: "readonly",
       },
+    },
+    rules: {
+      "@typescript-eslint/no-empty-function": "off",
     },
   },
   {
