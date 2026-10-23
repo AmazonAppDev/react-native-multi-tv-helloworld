@@ -2,7 +2,7 @@
 
 An Amazon Vega OS (Fire TV) app that turns the [Globie Earth MCP](https://mcp.globie.earth/mcp) catalogue into a 10-foot TV experience: a browsable forest/podcast shelf and an AI-assisted smart player with a podcast mode.
 
-Built for the Nebius × NVIDIA hackathon on top of the Amazon [react-native-multi-tv-helloworld](https://github.com/AmazonAppDev/react-native-multi-tv-helloworld) monorepo template.
+Built for the Amazon hackathon (Fire TV / Vega OS track) on top of the Amazon [react-native-multi-tv-helloworld](https://github.com/AmazonAppDev/react-native-multi-tv-helloworld) monorepo template. It pairs with the Globie Earth Alexa skill: a spoken `pair my tv` hands the TV a six-digit code, and the skill then drives the app's quests, search and family quiz over the MCP server's `/v1/tv/commands` relay.
 
 ## Introduction
 
