@@ -20,6 +20,16 @@ This project demonstrates how to share React Native code across multiple TV plat
 | Expo TV       | Android TV, Apple TV |
 | Expo Web      | Browser              |
 
+## Branches
+
+> **Heads up:** `main` targets **Vega OS 2.0** (Vega SDK 2.0). Older Vega branches target OS 1.2. Check the branch you're on before you build, because the Vega SDK and OS versions must match.
+
+| Branch          | React Native | Vega OS                              | Use when                                      |
+| --------------- | ------------ | ------------------------------------ | --------------------------------------------- |
+| `main`          | 0.83         | 2.0 (`min` and `target` in manifest) | You're building for Vega OS 2.0 (the default) |
+| `release-rn-83` | 0.83         | 1.2 (`target` in manifest)           | You need Vega OS 1.2 with React Native 0.83   |
+| `release-rn-72` | 0.72         | Not set in manifest                  | You need the older React Native 0.72 setup    |
+
 ## Project Structure
 
 ```
@@ -66,12 +76,7 @@ Vega development requires the Vega SDK and Yarn configuration for Amazon device 
 1. [Install the Vega Developer Tools](https://developer.amazon.com/docs/vega/latest/install-vega-sdk.html)
 2. [Configure Yarn for Vega](https://developer.amazon.com/docs/vega/latest/configure-package-managers.html)
 
-**Vega SDK version by branch**
-
-- `main` needs **Vega SDK 2.0** (targets OS 2.0). Install a 2.0.x SDK and set it as the default with `vega sdk use <version>`.
-- Other branches can use **OS 1.2**.
-
-Check `[os.version]` in `packages/vega/manifest.toml` to confirm which OS version your branch targets.
+> **Check the branch first.** `main` needs Vega SDK 2.0. Install a 2.0.x SDK and set it as the default with `vega sdk use <version>` ([Vega 2.0 Get Started guide](https://developer.amazon.com/docs/vega/2.0/vega-get-started)). Other branches target an older OS. See [Branches](#branches), and confirm with `[os.version]` in `packages/vega/manifest.toml`.
 
 **Expo TV**
 
