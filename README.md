@@ -66,6 +66,13 @@ Vega development requires the Vega SDK and Yarn configuration for Amazon device 
 1. [Install the Vega Developer Tools](https://developer.amazon.com/docs/vega/latest/install-vega-sdk.html)
 2. [Configure Yarn for Vega](https://developer.amazon.com/docs/vega/latest/configure-package-managers.html)
 
+**Vega SDK version by branch**
+
+- `main` needs **Vega SDK 2.0** (targets OS 2.0). Install a 2.0.x SDK and set it as the default with `vega sdk use <version>`.
+- Other branches can use **OS 1.2**.
+
+Check `[os.version]` in `packages/vega/manifest.toml` to confirm which OS version your branch targets.
+
 **Expo TV**
 
 - [Expo CLI](https://docs.expo.dev/get-started/installation/)
