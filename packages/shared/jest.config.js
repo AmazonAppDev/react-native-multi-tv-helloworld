@@ -1,5 +1,4 @@
 module.exports = {
-  preset: '@testing-library/react-native',
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json'],
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': 'babel-jest',

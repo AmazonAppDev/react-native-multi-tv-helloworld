@@ -13,14 +13,19 @@ import {
   getImageScale,
 } from '../scaling';
 
-jest.mock('react-native', () => ({
-  Dimensions: {
-    get: jest.fn(() => ({width: 1920, height: 1080})),
-  },
-  PixelRatio: {
-    roundToNearestPixel: jest.fn((value: number) => Math.round(value)),
-  },
-}));
+// react-native is a peer dependency and isn't installed in this package, so mock it virtually
+jest.mock(
+  'react-native',
+  () => ({
+    Dimensions: {
+      get: jest.fn(() => ({width: 1920, height: 1080})),
+    },
+    PixelRatio: {
+      roundToNearestPixel: jest.fn((value: number) => Math.round(value)),
+    },
+  }),
+  {virtual: true},
+);
 
 describe('scaling utilities', () => {
   beforeEach(() => {

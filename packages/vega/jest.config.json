@@ -3,13 +3,17 @@
   "transform": {
     "^.+\\.tsx?$": ["ts-jest", { "babelConfig": true, "diagnostics": true }]
   },
-  "setupFiles": ["./node_modules/@amazon-devices/react-native-kepler/jest/setup.js"],
+  "setupFiles": [
+    "./node_modules/@amazon-devices/react-native-kepler/jest/setup.js",
+    "<rootDir>/test/jest.setup.ts"
+  ],
   "testRegex": "/test/.*\\.(test|spec)\\.(ts|tsx|js)$",
   "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
   "moduleNameMapper": {
-    "^~/(.*)$": "<rootDir>/src/$1"
+    "^~/(.*)$": "<rootDir>/src/$1",
+    "^lottie-react-native$": "@amazon-devices/lottie-react-native"
   },
-  "modulePaths": ["<rootDir>/src"],
+  "modulePaths": ["<rootDir>/src", "<rootDir>/node_modules"],
   "roots": [
     "<rootDir>/src/",
     "<rootDir>/test/",
