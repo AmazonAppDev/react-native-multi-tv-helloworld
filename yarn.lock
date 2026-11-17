@@ -2990,6 +2990,7 @@ __metadata:
     "@typescript-eslint/eslint-plugin": "npm:^5.30.0"
     babel-jest: "npm:^29.6.3"
     babel-plugin-module-resolver: "npm:^5.0.2"
+    babel-plugin-react-compiler: "npm:^1.0.0"
     eslint: "npm:^8.57.0"
     jest: "npm:^29.6.3"
     mustache: "npm:^4.2.0"
